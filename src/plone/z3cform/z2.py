@@ -2,7 +2,7 @@ from zope import interface
 from zope.i18n.interfaces import IUserPreferredCharsets
 from zope.publisher.browser import isCGI_NAME
 from zope.publisher.interfaces.browser import IBrowserApplicationRequest
-import z3c.form.interfaces
+from plone.z3cform.interfaces import IFormLayer
 
 
 class IFixedUpRequest(interface.Interface):
@@ -63,7 +63,7 @@ def _decode(text, charsets):
     return text
 
 
-def switch_on(view, request_layer=z3c.form.interfaces.IFormLayer):
+def switch_on(view, request_layer=IFormLayer):
     """Fix up the request and apply the given layer. This is mainly useful
     in Zope < 2.10 when using a wrapper layout view.
     """

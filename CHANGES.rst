@@ -4,7 +4,9 @@ Changelog
 0.8.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Provide a more specific browser layer for form requests, which derives from 
+  ``z3c.form.interfaces.IFormLayer``.
+  [thet]
 
 
 0.8.1 (2015-01-22)

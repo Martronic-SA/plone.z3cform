@@ -2,6 +2,12 @@ from z3c.form.interfaces import IForm
 from zope import schema
 from zope.interface import Interface, Attribute
 from zope.pagetemplate.interfaces import IPageTemplate
+import z3c.form.interfaces
+
+
+class IFormLayer(z3c.form.interfaces.IFormLayer):
+    """Browserlayer for plone.z3cform based forms.
+    """
 
 
 class IFormWrapper(Interface):

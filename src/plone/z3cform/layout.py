@@ -4,6 +4,7 @@ from Products.Five.browser.pagetemplatefile import BoundPageTemplate
 from plone.z3cform import interfaces
 from plone.z3cform import z2
 from zope.pagetemplate.interfaces import IPageTemplate
+import plone.z3cform.interfaces
 import z3c.form.interfaces
 import zope.component
 import zope.interface
@@ -22,7 +23,7 @@ class FormWrapper(BrowserView):
 
     form = None  # override this with a form class.
     index = None  # override with a page template, or rely on an adapter
-    request_layer = z3c.form.interfaces.IFormLayer
+    request_layer = plone.z3cform.interfaces.IFormLayer
 
     def __init__(self, context, request):
         super(FormWrapper, self).__init__(context, request)
