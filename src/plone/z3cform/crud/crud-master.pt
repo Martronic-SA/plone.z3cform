@@ -5,21 +5,21 @@
       i18n:domain="plone.z3cform"
       tal:omit-tag="">
 
-    <tal:status define="status view/status;
-                        has_error python:view.widgets.errors or status == getattr(view, 'formErrorsMessage', None)" condition="status">
-        <dl class="portalMessage error" tal:condition="has_error">
-            <dt i18n:translate="">
-                Error
-            </dt>
-            <dd tal:content="status" />
-        </dl>
-        <dl class="portalMessage info" tal:condition="not:has_error">
-            <dt i18n:translate="">
-                Info
-            </dt>
-            <dd tal:content="status" />
-        </dl>
-    </tal:status>
+  <tal:status define="status view/status;
+                      has_error python:view.widgets.errors or status == getattr(view, 'formErrorsMessage', None)" condition="status">
+      <dl class="portalMessage error" tal:condition="has_error">
+          <dt i18n:translate="">
+              Error
+          </dt>
+          <dd tal:content="status" />
+      </dl>
+      <dl class="portalMessage info" tal:condition="not:has_error">
+          <dt i18n:translate="">
+              Info
+          </dt>
+          <dd tal:content="status" />
+      </dl>
+  </tal:status>
 
   <p class="crud-description discreet"
        tal:condition="view/description"
