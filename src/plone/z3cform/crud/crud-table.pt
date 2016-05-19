@@ -8,9 +8,21 @@
   <h2 tal:condition="view/label | nothing"
       tal:content="view/label">Form title</h2>
 
-  <div class="portalMessage"
-       tal:condition="view/status" tal:content="view/status">
-  </div>
+  <tal:status define="status view/status;
+                      has_error python:view.widgets.errors or status == getattr(view, 'formErrorsMessage', None)" condition="status">
+      <dl class="portalMessage error" tal:condition="has_error">
+          <dt i18n:translate="">
+              Error
+          </dt>
+          <dd tal:content="status" />
+      </dl>
+      <dl class="portalMessage info" tal:condition="not:has_error">
+          <dt i18n:translate="">
+              Info
+          </dt>
+          <dd tal:content="status" />
+      </dl>
+  </tal:status>
 
   <form action="." method="post" tal:attributes="action request/getURL">
 
@@ -47,9 +59,8 @@
         </tbody>
     </table>
 
-    <div class="action" tal:repeat="action view/actions/values">
-      <input type="submit" tal:replace="structure action/render" />
-    </div>
+    <metal:block use-macro="context/@@ploneform-macros/fields" />
+    <metal:block use-macro="context/@@ploneform-macros/actions" />
 
   </form>
 
